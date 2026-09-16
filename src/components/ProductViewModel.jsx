@@ -15,18 +15,33 @@ import { useState } from 'react'
     <>
 
       <Dialog open={open} as="div" className="relative z-10 " onClose={close}>
-        <DialogBackdrop className="fixed inset-0 bg-black/30" />
+        <DialogBackdrop className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
 
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-md rounded-xl bg-white/5 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+              className="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all md:max-w-155 md:min-w-155 w-full"
             >
-              <DialogTitle as="h3" className="text-base/7 font-medium text-slate-800">
-                {productName}
-                
-              </DialogTitle>
+
+                {image && (
+                    <div className = "flex justify-center aspect-3/2">
+                        <img 
+                            className ="w-full h-full cursor-pointer transition-transform duration-300 hover:scale-105"
+                            src = {image}
+                            alt = {productName}
+                        />
+                    </div>
+                )}
+
+
+
+              <div className ="px-6 pt-10 pb-2">
+                    <DialogTitle as="h1" className="lg:text-3xl sm:text-2xl text-xl font-semibold leading-6 text-gray-800 mb-4 ">
+                            {productName}
+                    </DialogTitle>
+              </div>
+              
               <p className="mt-2 text-sm/6 text-slate-600">
                {description}
               </p>
