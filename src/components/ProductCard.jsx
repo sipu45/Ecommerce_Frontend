@@ -25,7 +25,7 @@ const ProductCard = ({
 
         return (
             <div className = "border rounded-lg shadow-xl overflow-hidden transition-shadow duration-300">
-                <div onCllick ={()=>{
+                <div onClick ={()=>{
                     handleProductView({
                         id: productId,
                         productName, 
@@ -45,7 +45,7 @@ const ProductCard = ({
                         />
                 </div>
                 <div className = "p-4">
-                    <h2 onCllick ={()=>{
+                    <h2 onClick ={()=>{
                     handleProductView({
                         id: productId,
                         productName, 
@@ -94,7 +94,12 @@ const ProductCard = ({
                         {isAvailable ? "Add to Cart" : "Out of Stock"}
                     </button>
                 </div>
-                <ProductViewModal />
+                    <ProductViewModal 
+                    open = {openProductViewModal}
+                    setOpen ={setOpenProductViewModal}
+                    product = {selectedViewProduct}
+                    isAvailable = {isAvailable}
+                 />
              </div>
 
         </div>
