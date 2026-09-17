@@ -93,15 +93,14 @@ const ProductCard = ({
                         <FaShoppingCart className="mr-2 " />
                         {isAvailable ? "Add to Cart" : "Out of Stock"}
                     </button>
-                </div>
-                    <ProductViewModal 
+                </div>     
+             </div>
+              <ProductViewModal 
                     open = {openProductViewModal}
                     setOpen ={setOpenProductViewModal}
                     product = {selectedViewProduct}
                     isAvailable = {isAvailable}
                  />
-             </div>
-
         </div>
         
         );
