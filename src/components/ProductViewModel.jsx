@@ -1,10 +1,10 @@
-import {Button,Dialog, DialogBackdrop, DialogPanel, DialogTitle,} from "@headlessui/react";
+import {Dialog, DialogBackdrop, DialogPanel, DialogTitle,} from "@headlessui/react";
 import { Divider } from "@mui/material";
 import Status from "./Status";
 import { MdClose, MdDone } from "react-icons/md";
 
 function ProductViewModal({ open, setOpen, product, isAvailable }) {
-    const {id, productName, image,description,quantity,price, discount, specialPrice,} = product;
+    const {id, productName, image,description,quantity,price, discount, specialPrice} = product;
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -83,7 +83,8 @@ function ProductViewModal({ open, setOpen, product, isAvailable }) {
                                 <button
                                 onClick={() => setOpen(false)}
                                 type="button"
-                                className="px-4 py-2 text-sm font-semibold text-slate-700 hover:border-slate-800 rounded-md"
+                                // className="px-4 py-2 border-x-2 border-y-2 text-sm font-semibold text-slate-800 hover:border-slate-800 rounded-md"
+                                className="px-4 py-2 border-x-2 border-y-2 border-slate-300 text-sm font-semibold text-slate-800 hover:border-slate-800 rounded-md transition-colors duration-200"
                                 >
                                 Close
                                 </button>

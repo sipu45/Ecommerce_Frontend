@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@theme {
+  --font-montserrat: Montserrat, sans-serif;
+  --color-custom-blue: rgba(28, 100, 242, 1);
+}
