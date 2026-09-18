@@ -24,7 +24,7 @@ const ProductCard = ({
     }
 
         return (
-            <div className = "border rounded-lg shadow-xl overflow-hidden transition-shadow duration-300">
+            <div className = " rounded-lg shadow-xl overflow-hidden transition-shadow duration-300">
                 <div onClick ={()=>{
                     handleProductView({
                         id: productId,
