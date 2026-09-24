@@ -1,6 +1,7 @@
 import api from "../../api/api"
 export const fetchProducts = () => async(dispatch) =>{
     try{
+        dispatch({ type : "IS_FET CHING" });
         const{ data } = await api.get(`/public/products`);
         dispatch({
             type:"FETCH_PRODUCTS",
@@ -10,9 +11,14 @@ export const fetchProducts = () => async(dispatch) =>{
             totalElements: data.totalElements,
             totalPages: data.totalPages,
             lastPage: data.lastPage
-        })
+        });
+        dispatch({type : "IS_SUCCESS" });
     } catch(error){
         console.log(error);
+        dispatch({
+            type : "IS_SUCCESS",
+            payload : error ?.response?.data?.message || "Failed to fetch Product"  //optional Chainig
+         });
 
     }
 }
