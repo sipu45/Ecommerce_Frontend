@@ -1,6 +1,7 @@
 import { Button, FormControl ,InputLabel, MenuItem, Select, Tooltip} from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiArrowUp, FiRefreshCw, FiSearch } from "react-icons/fi";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 const Filter = () => {
      const categories = [
@@ -9,11 +10,34 @@ const Filter = () => {
         {categoryId : 3, categoryName :"Furniture"},
         {categoryId : 4, categoryName :"Books"},
         {categoryId : 5, categoryName :"Toys"},
-     ]
+     ];
+
+    const [searchParams] = useSearchParams();  //read and update the url query parameter
+    const params = new URLSearchParams(searchParams);
+    const pathname = useLocation().pathname;   //provide the information of current Url(path name)
+    const navigate =  useNavigate();   //Navigate  to new URL programatically
 
      const [category , setCategory] = useState("all");
+     const [sortOrder,setSortOrder] = useState("asc");
+     const [searchTerm,setSearchTerm] = useState("");
+
+     useEffect(()=>{
+        const currentCategory = searchParams.get("category") || "all";
+        const currentSortOrder = searchParams.get("sortby") || "asc";
+        const currentSearchTerm = searchParams.get("keyword") ||"";
+
+        setCategory(currentCategory);
+        setSortOrder(currentSortOrder);
+        setSearchTerm(currentSearchTerm);
+     },[searchParams]);
+
 
      const handleCategoryChange = (event) =>{
+        const seectedCategory = event.target.value;
+        
+        if(seectedCategory === "all"){
+            params.delete("category");
+        }
         setCategory(event.target.value);
      };
 

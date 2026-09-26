@@ -6,6 +6,12 @@ import { fetchProducts } from "../store/actions";
 import Filter from "./Filter";
 
 
+//http://localhost:xxxx?keyword=test&sortby=desc
+
+//1.Make sure url is updated with filter values(useSearchParams)
+//2.Use this filter values for getting data from backend(using custom hook)
+
+
 const Products = () => {
   // Fetching errors rom react redux store
    const {isLoading , errorMessage} = useSelector(
