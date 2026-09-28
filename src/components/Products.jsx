@@ -4,6 +4,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import { useEffect } from "react";
 import { fetchProducts } from "../store/actions";
 import Filter from "./Filter";
+import useProductFilter from "./useProductFillter";
 
 
 //http://localhost:xxxx?keyword=test&sortby=desc
@@ -23,10 +24,12 @@ const Products = () => {
       (state) => state.products
     )
     const dispatch = useDispatch();
+    useProductFilter();
 
-    useEffect(() =>{
-      dispatch(fetchProducts());
-    } ,[dispatch]);
+    // this code also do the same thing fetching the products
+    // useEffect(() =>{
+    //   dispatch(fetchProducts());
+    // } ,[dispatch]);
 
 
     
