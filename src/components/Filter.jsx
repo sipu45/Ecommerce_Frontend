@@ -37,7 +37,7 @@ const Filter = () => {
             if(searchTerm){
                 searchParams.set("keyword" ,searchTerm);
             }else{
-                searchParams.delete("keywod");
+                searchParams.delete("keyword");
             }
             navigate(`${pathname}?${searchParams.toString()}`)
         },700);
@@ -56,15 +56,15 @@ const Filter = () => {
         }else{
             params.set("category",selectedCategory);
         }
-        navigate(`${pathname}?${params}?`);
+        navigate(`${pathname}?${params.toString()}`);
         setCategory(event.target.value);
      };
 
      const toggleSortOrder = ()=>{
         setSortOrder((prevOrder) => {
-            const newOrder = (prevOrder === "asc")? "desc" : "acs" ;
+            const newOrder = (prevOrder === "asc")? "desc" : "asc" ;
             params.set("sortby", newOrder);
-            navigate(`${pathname} ? ${params}`)
+            navigate(`${pathname} ? ${params.toString()}`)
             return newOrder;
         })
      };
