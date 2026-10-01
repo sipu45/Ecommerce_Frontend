@@ -2,7 +2,7 @@ import {useDispatch, useSelector } from "react-redux";
 import ProductCard from "./ProductCard";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { useEffect } from "react";
-import { fetchProducts } from "../store/actions";
+import { fetchCategories } from "../store/actions";
 import Filter from "./Filter";
 import useProductFilter from "./useProductFillter";
 
@@ -20,22 +20,22 @@ const Products = () => {
    );
 
     // Fetching products rom react redux store
-    const {products} = useSelector(
+    const {products , categories} = useSelector(
       (state) => state.products
     )
     const dispatch = useDispatch();
     useProductFilter();
 
     // this code also do the same thing fetching the products
-    // useEffect(() =>{
-    //   dispatch(fetchProducts());
-    // } ,[dispatch]);
+    useEffect(() =>{
+      dispatch(fetchCategories());
+    } ,[dispatch]);
 
 
     
   return (
     <div className = "lg:px-14 sm:px-8 px-4 py-14 2xl:w-[90%] 2xl:mx-auto">
-      <Filter />
+      <Filter categories ={categories ? categories :[]}/>
         {isLoading ? (
             <p>It is Loading...</p>
           ) : errorMessage ? (
