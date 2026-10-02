@@ -4,9 +4,10 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import { useEffect } from "react";
 import { fetchCategories } from "../store/actions";
 import Filter from "./Filter";
-import useProductFilter from "./useProductFillter";
+import useProductFilter from "./useProductFilter";
 import Loader from "./Loader";
 import Paginations from "./Paginations";
+
 
 
 
@@ -23,7 +24,7 @@ const Products = () => {
    );
 
     // Fetching products rom react redux store
-    const {products , categories} = useSelector(
+    const {products , categories ,pagination} = useSelector(
       (state) => state.products
     )
     const dispatch = useDispatch();
@@ -57,7 +58,9 @@ const Products = () => {
               </div>
 
                  <div className = "flex justify-center pt-10">
-                    <Paginations />
+                    <Paginations  
+                    numberOfPages={pagination?.totalPages}
+                    totalProducts ={pagination?.totalElements}/>
                  </div>
               
             </div>
