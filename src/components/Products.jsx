@@ -5,6 +5,9 @@ import { useEffect } from "react";
 import { fetchCategories } from "../store/actions";
 import Filter from "./Filter";
 import useProductFilter from "./useProductFillter";
+import Loader from "./Loader";
+import Paginations from "./Paginations";
+
 
 
 //http://localhost:xxxx?keyword=test&sortby=desc
@@ -37,7 +40,7 @@ const Products = () => {
     <div className = "lg:px-14 sm:px-8 px-4 py-14 2xl:w-[90%] 2xl:mx-auto">
       <Filter categories ={categories ? categories :[]}/>
         {isLoading ? (
-            <p>It is Loading...</p>
+           <Loader text={"Products Loading"}/>
           ) : errorMessage ? (
             <div className = " flex justify-center items-center h-50">
                 <FaExclamationTriangle  className ="text-slate-800 text-3xl mr-2"/>
@@ -52,6 +55,11 @@ const Products = () => {
                   products.map((item,i) => <ProductCard key={i} {...item}/>
                  )}
               </div>
+
+                 <div className = "flex justify-center pt-10">
+                    <Paginations />
+                 </div>
+              
             </div>
             )
         }
