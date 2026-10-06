@@ -4,7 +4,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import { useEffect } from "react";
 import { fetchCategories } from "../../store/actions";
 import Filter from "./Filter";
-import useProductFilter from "../useProductFilter";
+import useProductFilter from "../../hooks/useProductFilter";
 import Loader from "../shared/Loader";
 import Paginations from "../shared/Paginations";
 
