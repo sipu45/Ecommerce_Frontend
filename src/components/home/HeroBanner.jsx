@@ -1,34 +1,62 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay, EffectFade } from 'swiper/modules';
+import {bannerLists} from '../../utils';
 
-import {bannerList} from '../../utils/index.js';
 
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import { Link } from 'react-router-dom';
+
+const colors = ["bg-banner-color1", "bg-banner-color2", "bg-banner-color3"];
 
 const HeroBanner = () => {
   return (
-   <div className='py-2 round-md '>
+   <div className='py-2 rounded-md '>
         <Swiper
-            grabcursor={true}
+            grabCursor={true}
             autoplay ={{
-                delay: 4000,
+                delay: 3000,
                 disableOnInteraction: false,
             }}
-            navigation={true}
-            modules={[Pagination, Navigation, Autoplay, EffectFade]}
+            navigation
+            modules={[Pagination,EffectFade,Navigation,Autoplay]}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             slidesPerView={1}
         >
-            {bannerList.map((item, i) => (
-                <SwiperSlide key={i}>
-                    <div className={`carousel-item rounded-md sm:h-[500px] h-96`}>
-                        <h3 className='text-xl font-bold text-gray-800'>{item.title}</h3>
-                    </div>
-                </SwiperSlide>
+         {bannerLists.map((item, i) => (
+         <SwiperSlide key={item.id}>
+            <div className={`carousel-item rounded-md sm:h-100 h-96 ${colors[i]}`}>
+                <div className='flex items-center justify-center'>
+                    <div className='hidden lg:flex justify-center -1/2 p-8'>
+                       <div className='text-center'> 
+                                        <h3 className="text-3xl text-white font-bold">
+                                            {item.title}
+                                        </h3>
+                                        <h1 className="text-5xl text-white font-semibold">
+                                            {item.subtitle}
+                                        </h1>
+                                        <p className=" text-white font-bold mt-4">
+                                            {item.description}
+                                        </p>
+                                        <Link 
+                                        className="mt-6 inline-block bg-black text-white py-2 px-4 rounded hover:bg-gray-800"
+                                        to ="/products">
+                                            Shop
+                                        </Link>
+                                    </div>
+                                   </div> 
+                                <div className='w-full flex  justify-center  lg:w-1/2 p-4'>
+                                    <img src={item?.image} alt={item?.title} />
+                         </div>
+                 </div>     
+            </div>
+        </SwiperSlide>
             ))}
-        </Swiper>
+    </Swiper>
    </div>
   );
 };
