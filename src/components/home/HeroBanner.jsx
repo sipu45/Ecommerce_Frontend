@@ -8,6 +8,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+import 'swiper/css/scrollbar';
+import 'swiper/css/autoplay';
 import { Link } from 'react-router-dom';
 
 const colors = ["bg-banner-color1", "bg-banner-color2", "bg-banner-color3"];
@@ -29,9 +31,9 @@ const HeroBanner = () => {
         >
          {bannerLists.map((item, i) => (
          <SwiperSlide key={item.id}>
-            <div className={`carousel-item rounded-md sm:h-100 h-96 ${colors[i]}`}>
+            <div className={`carousel-item rounded-md sm:h-110 h-90 ${colors[i]}`}>
                 <div className='flex items-center justify-center'>
-                    <div className='hidden lg:flex justify-center -1/2 p-8'>
+                    <div className='hidden lg:flex justify-center w-1/2 p-8 '>
                        <div className='text-center'> 
                                         <h3 className="text-3xl text-white font-bold">
                                             {item.title}
@@ -49,7 +51,7 @@ const HeroBanner = () => {
                                         </Link>
                                     </div>
                                    </div> 
-                                <div className='w-full flex  justify-center  lg:w-1/2 p-4'>
+                                <div className='w-full h-full flex  justify-center  lg:w-1/2 p-4 '>
                                     <img src={item?.image} alt={item?.title} />
                          </div>
                  </div>     
