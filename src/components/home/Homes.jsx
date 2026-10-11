@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { fetchProducts } from "../../store/actions";
 import ProductCard from "../shared/ProductCard";
 import Loader from "../shared/Loader";
+import { FaExclamationTriangle } from "react-icons/fa";
 
 const Home = () =>{
     const dispatch = useDispatch();
@@ -13,13 +14,14 @@ const Home = () =>{
     );
 
 
-    
     useEffect(() =>{
         dispatch(fetchProducts());
     } ,[dispatch]);
+
+    
     return(
         <div className = "lg:px-14 sm:px-8 px-4">
-            <div className="py-6"> \
+            <div className="py-6"> 
                 <HeroBanner/>
             </div>
 
