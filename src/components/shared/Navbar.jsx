@@ -1,6 +1,8 @@
 import { Badge } from "@mui/material";
 import { useState } from "react";
 import { FaShoppingCart, FaSignInAlt, FaStore } from "react-icons/fa";
+import { IoIosMenu } from "react-icons/io";
+import { RxCross2 } from "react-icons/rx";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = ()=>{
@@ -82,10 +84,19 @@ const Navbar = ()=>{
                           <FaSignInAlt/>
                           <span>Login</span>
                             
-                    </Link>
-                    
+                    </Link>  
                 </li>
             </ul>
+
+            <button
+            onClick={()=>setNavbarOpen(!navbarOpen)}
+            className="sm:hidden flex items-center sm:mt-0 mt-2 ">
+                {navbarOpen?(
+                    <RxCross2 className="text-white text-3xl" />
+                ):(
+                    <IoIosMenu className="text-white text-3xl" />
+                )}
+            </button>
            </div> 
         </div>
     );
