@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import ProductViewModal from "./ProductViewModel";
 import truncateText from "../../utils/truncateText";
+import { useDispatch } from "react-redux";
 
 
 
@@ -22,6 +23,7 @@ const ProductCard = ({
     const btnLoader = false ;
     const [selectedViewProduct , setSelectedViewProduct] = useState("");
     const isAvailable = quantity && Number(quantity) > 0; 
+    const dispatch = useDispatch();
 
 
     const handleProductView = (product) =>{
@@ -30,6 +32,10 @@ const ProductCard = ({
              setOpenProductViewModal(true);
         }
        
+    };
+
+    const addToCartHandler = (cartItems) =>{
+            dispatch(addToCart())
     }
 
         return (

@@ -47,3 +47,6 @@ export const fetchCategories = () => async(dispatch) =>{
 
     }
 };
+
+
+
