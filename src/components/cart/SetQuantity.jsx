@@ -1,5 +1,5 @@
 
-const btnStyles = "border-[1.2px] border-slate-800 px-3 py-1 rounded";
+const btnStyles = "border-[1.2px] border-slate-800 px-3 py-1 rounded-sm";
 const SetQuantity = ({
     quantity,
     cardCounter,
@@ -10,9 +10,9 @@ const SetQuantity = ({
    
             <div classname="flex gap-8 items-center">
                 {cardCounter ? null : <div className="font-semibold">QUANTITY</div>}
-                <div className="flex md:fllex-row flex-col gap-4 items-center lg:text-[22px] text-sm ">
+                <div className="flex md:flex-row flex-col gap-4 items-center lg:text-[22px] text-sm ">
                     <button
-                        disabled ={quantity<=1}
+                        disabled = {quantity<=1}
                         className={btnStyles}>
                         -
                     </button>
