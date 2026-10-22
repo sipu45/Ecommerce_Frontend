@@ -75,4 +75,32 @@ export const addToCart = (data , qty = 1 , toast ) =>
 };
 
 
+export const increaseCartQunatity =
+         (data , toast , currentQuantity , setCurrentQuantity) =>
+         (dispatch , getState) => {
+            const { products } = getState().products;
+            const getProduct = products.find(
+                (item) => item.productId === data.productId
+            );
+            console.log(data);
+
+            const isQuantityExist = getProduct.quantity >= currentQuantity + 1;
+            
+            
+            if(isQuantityExist){
+                const newQuantity = currentQuantity + 1;
+                setCurrentQuantity(newQuantity); // update quantity on ui
+
+                dispatch({
+                    type : "ADD_CART",
+                    payload: {...data , quantity : newQuantity + 1 } // updated on redux store 
+                });
+                localStorage.setItem("cartItems" ,JSON.stringify(getState().carts.cart)); // updated on local Storage
+            } else{
+                toast.error("Quantity Reached to Limit");
+            }
+         }
+
+
+
 
