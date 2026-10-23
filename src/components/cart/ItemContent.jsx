@@ -2,7 +2,7 @@ import { useState } from "react";
 import { HiOutlineTrash } from "react-icons/hi";
 import SetQuantity from "./SetQuantity";
 import { useDispatch } from "react-redux";
-import { increaseCartQunatity } from "../../store/actions";
+import { decreaseCartQunatity, increaseCartQunatity } from "../../store/actions";
 import toast from "react-hot-toast";
 
 
@@ -30,9 +30,17 @@ const ItemContent = ({
         ));  
   }
 
+  const handleQtyDecrease = (cartItems) =>{
+        if(currentQunatity > 1){
+            const newQuantity = currentQunatity - 1 ;
+            setCurrentQuantity(newQuantity);
+            dispatch(decreaseCartQunatity(cartItems,newQuantity));
+        }
+  }
+
 
   return (
-     <div className="grid md:grid-cols-5 grid-cols-4 md:text-md text-sm gap-4 items-center  border border-slate-200  rounded-md  lg:px-4  py-4 p-2">
+     <div className="grid md:grid-cols-5 grid-cols-4 md:text-base text-sm gap-4 items-center  border border-slate-200  rounded-md  lg:px-4  py-4 p-2">
             <div className="md:col-span-2 justify-self-start flex  flex-col gap-2 ">
                 <div className="flex md:flex-row flex-col lg:gap-4 sm:gap-3 gap-0 items-start ">
                         <h3 className="lg:text-[17px] text-sm font-semibold text-slate-600">
@@ -59,7 +67,7 @@ const ItemContent = ({
           </div> 
 
 
-                <div className="justify-self-center lg:text-[17px] tet-sm text-slate-600 font-semibold">
+                <div className="justify-self-center lg:text-[17px] text-sm text-slate-600 font-semibold">
                      {Number(specialPrice)}   
                 </div>
 
@@ -77,7 +85,15 @@ const ItemContent = ({
                             productId,
                             quantity
                         })}
-                        handleQtyDecrease = {() => {}}/>
+                        handleQtyDecrease = {() => {handleQtyDecrease({
+                            image,
+                            productName,
+                            description,
+                            price,
+                            specialPrice,
+                            productId,
+                            quantity
+                        })}}/>
                 </div>
 
                 <div className="justify-self-center lg:text-[17px] tet-sm text-slate-600 font-semibold">
