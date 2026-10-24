@@ -2,6 +2,7 @@ import { MdArrowBack, MdShoppingCart } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ItemContent from "./itemContent";
+import CartEmpty from "./CartEmpty";
 
 const Cart = () => {
     //  get the cart data from  react redux store 
@@ -13,7 +14,7 @@ const Cart = () => {
         (acc,cur) => acc + Number(cur?.specialPrice) * Number(cur?.quantity) , 0
     );
 
-    if(!cart || cart.length === 0) return <h1>Cart Is Empty</h1>;
+    if(!cart || cart.length === 0) return <CartEmpty />;
 
 
   return (

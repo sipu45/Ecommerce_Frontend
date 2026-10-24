@@ -48,4 +48,7 @@ export const cartReducer = (state = initialState, action) => {
       return state;
   }
 
+  return state ;
+  
+
 };
