@@ -2,7 +2,7 @@ import { useState } from "react";
 import { HiOutlineTrash } from "react-icons/hi";
 import SetQuantity from "./SetQuantity";
 import { useDispatch } from "react-redux";
-import { decreaseCartQunatity, increaseCartQunatity } from "../../store/actions";
+import { decreaseCartQunatity, increaseCartQunatity, removeFromCart } from "../../store/actions";
 import toast from "react-hot-toast";
 
 
@@ -39,6 +39,11 @@ const ItemContent = ({
   }
 
 
+  const removeItemFromCart = (cartItems) =>{
+    dispatch(removeFromCart(cartItems,toast));    
+  }
+
+
   return (
      <div className="grid md:grid-cols-5 grid-cols-4 md:text-base text-sm gap-4 items-center  border border-slate-200  rounded-md  lg:px-4  py-4 p-2">
             <div className="md:col-span-2 justify-self-start flex  flex-col gap-2 ">
@@ -57,7 +62,15 @@ const ItemContent = ({
 
                         <div className="flex items-start gap-5 mt-3">
                             <button 
-                                onClick={() => {}}
+                                onClick={() => removeItemFromCart({
+                                    image,
+                                    productName,
+                                    description,
+                                    price,
+                                    specialPrice,
+                                    productId,
+                                    quantity,
+                                })}
                                 className="flex items-center font-semibold space-x-2 px-4 py-1 text-xs border border-rose-600 text-rose-600 rounded-md hover:bg-red-50  transition-colors duration-200 ">
                                 <HiOutlineTrash size={16} className="text-rose-600"/>   
                                     Remove
@@ -83,7 +96,7 @@ const ItemContent = ({
                             price,
                             specialPrice,
                             productId,
-                            quantity
+                            quantity,
                         })}
                         handleQtyDecrease = {() => {handleQtyDecrease({
                             image,
@@ -92,7 +105,7 @@ const ItemContent = ({
                             price,
                             specialPrice,
                             productId,
-                            quantity
+                            quantity,
                         })}}/>
                 </div>
 
