@@ -11,6 +11,7 @@ const Navbar = ()=>{
     console.log(path);
     const [navbarOpen,setNavbarOpen] = useState(false);
     const { cart } = useSelector((state) => state.carts);
+    const { user } = useSelector((state) => state.auth);
     return(
         <div className ="h-17.5 bg-custom-gradient text-white z-50 flex items-center sticky top-0">
            <div className="lg:px-14 sm:px-8 px-4 w-full flex justify-between">
@@ -76,7 +77,13 @@ const Navbar = ()=>{
                     </Link>
                 </li>
 
-                <li className="font-medium transition-all duration-150 hover:text-blue-500">
+
+                {(user && user.id) ? (
+                     <li className="font-medium transition-all duration-150 hover:text-blue-500">
+                            <p>Welcome</p>
+                    </li>
+                ) : (
+                     <li className="font-medium transition-all duration-150 hover:text-blue-500">
                     <Link className="flex items-center space-x-2 px-4 py-1.5 
                             bg-linear-to-r from-purple-600 to-red-500 
                             text-white font-semibold rounded-md shadow-lg 
@@ -88,6 +95,8 @@ const Navbar = ()=>{
                             
                     </Link>  
                 </li>
+                )}
+               
             </ul>
 
             <button
