@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import api from "../../api/api"
 export const fetchProducts = (queryString) => async(dispatch) =>{
     try{
@@ -122,4 +123,25 @@ export const removeFromCart =(data ,toast) => (dispatch , getState) => {
         localStorage.setItem("cartItems" ,JSON.stringify(getState().carts.cart)); // updated on local Storage
 
     }
+
+
+
+
+export const authenticateSignInUser
+  = (sendData , toast , reset , navigate , setLoader) => async(dispatch) => {
+        try{                    
+            setLoader(true);
+            const { data } = await api.post("/auth/signin",sendData);  //API CALL TO BACkEND  sendData -> username and password
+            dispatch({type: "LOGIN_USER", payload: data});  // update the  authReducer in redu store
+            localStorage.setItem("auth",JSON.stringify(data)); // update the local storage in browser
+            reset() // reset the form (provide by react-hook-form)
+            toast.success("Login Success");
+            navigate("/");
+        } catch(error){
+            console.log(error);
+            toast.error(error?.response?.data?.message || "Internal Server error");
+        } finally{
+            setLoader(false);
+        }
+}
 

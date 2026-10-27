@@ -34,12 +34,12 @@ const InputField = ({
                     pattern:
                         type === "email"
                             ? {
-                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, // Updated with a more robust email regex
+                                value: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+com+$/, // Updated with a more robust email regex
                                 message: "Invalid email"
                             }
                             : type === "url"
                             ? {
-                                value: /^(https?:\/\/)?(([a-zA-Z0-9\u00a1-\uffff-]+\.)+[a-zA-Z\u00a1-\uffff]{2,})(:\d{2,5})?(\/[^\s]*)?$/,
+                                value:/^(https?:\/\/)?(([a-zA-Z0-9\u00a1-\uffff-]+\.)+[a-zA-Z\u00a1-\uffff]{2,})(:\d{2,5})?(\/[^\s]*)?$/,
                                 message: "Please enter a valid url"
                             }
                             : null,
