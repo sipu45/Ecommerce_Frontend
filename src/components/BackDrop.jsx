@@ -1,14 +1,11 @@
-import React from "react";
+import React from 'react'
 
-const BackDrop = ({ data, onClick }) => {
+const BackDrop = ({ data }) => {
   return (
     <div
-      onClick={onClick}
-      className={`fixed z-20 transition-all duration-200 opacity-50 w-screen h-screen bg-slate-300 ${
-        data ? "top-16" : "top-0"
-      } left-0`}
-    />
-  );
-};
+        className={`z-20 transition-all duration-200 opacity-50 w-screen h-screen bg-slate-300 fixed ${data ? "top-16" : "top-0"} left-0`}
+    ></div>
+  )
+}
 
-export default BackDrop;
+export default BackDrop

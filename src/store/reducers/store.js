@@ -9,7 +9,7 @@ import { authReducer } from "./authReducer";
 
 const user = localStorage.getItem("auth")
         ? JSON.parse(localStorage.getItem("auth"))   //JSON.Stringify() -> Javascript Object -> String  
-        : [];                                       // JSON.parse() -> String -> Javascript ObJect
+        : null ; // [] retutrn true that mismatch the logic publicpage and private route                                       // JSON.parse() -> String -> Javascript ObJect
 
 // when app initialie or loads the reducer get cart data from local storage
 const cartItems = localStorage.getItem("cartItems")
