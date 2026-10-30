@@ -135,10 +135,27 @@ export const authenticateSignInUser
             localStorage.setItem("auth",JSON.stringify(data)); // update the local storage in browser
             reset() // reset the form (provide by react-hook-form)
             toast.success("Login Success");
-            navigate("/");
+            navigate("/");  // navigate to homepage
         } catch(error){
             console.log(error);
             toast.error(error?.response?.data?.message || "Internal Server error");
+        } finally{
+            setLoader(false);
+        }
+}
+
+
+export const registerNewUser
+  = (sendData , toast , reset , navigate , setLoader) => async(dispatch) => {
+        try{                    
+            setLoader(true);
+            const { data } = await api.post("/auth/signup",sendData);  //API CALL TO BACkEND  sendData -> username,password and email
+            reset() // reset the form (provide by react-hook-form)
+            toast.success( data?.message || "User Register  Successfully"); // backend might send some message to show the user that registration is successfull
+            navigate("/login");
+        } catch(error){
+            console.log(error);
+            toast.error(error?.response?.data?.message || error?.response?.data?.password || "Internal Server error");
         } finally{
             setLoader(false);
         }
