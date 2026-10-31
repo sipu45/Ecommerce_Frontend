@@ -11,7 +11,7 @@ const PrivateRoute = ({ publicPage = false }) => {
 
   // if the pages is marked as public and user is not authenticated 
   if(publicPage){
-    return user ? <Navigate to = "/profile" /> : <Outlet />;
+    return user ? <Navigate to = "/" /> : <Outlet />;
   }
 
   // if page is private and user is authenticated 
