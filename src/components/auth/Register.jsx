@@ -6,11 +6,12 @@ import InputField from "../shared/inputField";
 import { useDispatch } from "react-redux";
 import { registerNewUser } from "../../store/actions";
 import toast from "react-hot-toast";
+import Spinners from "../shared/Spinners";
 
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true); //use true for testing purpose , must use true
 
     // use of react-hook-form
     const {
@@ -81,7 +82,9 @@ const Register = () => {
                         className="bg-button-gradient flex gap-2 items-center justify-center font-semibold text-white w-full py-2 hover:text-slate-400 transition-colors duration-100 rounded-sm my-3"
                         type="submit">
                             {loader ?(
-                                <>Loading...</>
+                                 <>
+                                   <Spinners />  Loading...
+                                </>
                             ) : (
                                 <>Register</>
                             )}   

@@ -6,11 +6,12 @@ import  InputField from "../shared/inputField";
 import { useDispatch } from "react-redux";
 import { authenticateSignInUser } from "../../store/actions";
 import toast from "react-hot-toast";
+import Spinners from "../shared/Spinners";
 
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [loader, setLoader] = useState(false);
+    const [loader, setLoader] = useState(false); //use true for testing purpose , must use true
 
     // use of react-hook-form
     const {
@@ -68,7 +69,9 @@ const Login = () => {
                         className="bg-button-gradient flex gap-2 items-center justify-center font-semibold text-white w-full py-2 hover:text-slate-400 transition-colors duration-100 rounded-sm my-3"
                         type="submit">
                             {loader ?(
-                                <>Loading...</>
+                                <>
+                                   <Spinners />  Loading...
+                                </>
                             ) : (
                                 <>Login</>
                             )}   
