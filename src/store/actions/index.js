@@ -131,7 +131,7 @@ export const authenticateSignInUser
         try{                    
             setLoader(true);
             const { data } = await api.post("/auth/signin",sendData);  //API CALL TO BACkEND  sendData -> username and password
-            dispatch({type: "LOGIN_USER", payload: data});  // update the  authReducer in redu store
+            dispatch({type: "LOGIN_USER", payload: data});  // update the  authReducer in redux store
             localStorage.setItem("auth",JSON.stringify(data)); // update the local storage in browser
             reset() // reset the form (provide by react-hook-form)
             toast.success("Login Success");
@@ -161,3 +161,11 @@ export const registerNewUser
         }
 }
 
+
+export  const logOutUser =(navigate) => (dispatch) =>{
+    dispatch({type:"LOG_OUT"});
+
+    //remove the auth from local storage
+    localStorage.removeItem("auth");
+    navigate("/login");
+}
