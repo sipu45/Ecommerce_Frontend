@@ -146,7 +146,7 @@ export const authenticateSignInUser
 
 
 export const registerNewUser
-  = (sendData , toast , reset , navigate , setLoader) => async(dispatch) => {
+  = (sendData , toast , reset , navigate , setLoader) => async() => { // if any error happen then add dispatch in the async function 
         try{                    
             setLoader(true);
             const { data } = await api.post("/auth/signup",sendData);  //API CALL TO BACkEND  sendData -> username,password and email
@@ -169,3 +169,9 @@ export  const logOutUser =(navigate) => (dispatch) =>{
     localStorage.removeItem("auth");
     navigate("/login");
 }
+
+
+
+// CheckOut Flow 
+// checkout in cart page -> address page -> payment page -> order summary page -> final payment 
+// user is now serious about making a purchase so we will saving the cart in backend
