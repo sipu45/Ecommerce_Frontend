@@ -1,5 +1,8 @@
 import { FaAddressBook } from "react-icons/fa";
 import Skeleton from "../shared/Skeleton";
+import { useState } from "react";
+import AddressInfoModal from "./AddressInfoModal";
+import AddAddressForm from "./AddAddressForm";
 
 
 export const AddressInfo = () => {
@@ -10,6 +13,19 @@ export const AddressInfo = () => {
 
     const noAddressExist = true; // for now we are assuming that user has no address. In future we will get this data from backend.
     const isLoading = false; // for now we are assuming that user has no address. In future we will get this data from backend.
+
+
+    const [openAddressModal, setOpenAddressModal] = useState(false);
+    const [selectedAddress, setSelectedAddress] = useState("");
+
+
+    const addNewAddressHandleer = () => {
+        // This function will be called when user click on "Add Address" button.
+        // In future we will show a modal to add new address.
+        setSelectedAddress("");
+        setOpenAddressModal(true);
+        console.log("Add New Address Clicked");
+    }
   return (
     <div className="pt-4">
         {noAddressExist  ? (
@@ -22,6 +38,12 @@ export const AddressInfo = () => {
                     <p className="mb-6 text-slate-800 text-center ">
                        Please add your address to complete purchase.
                     </p>
+
+                    <button
+                         onClick={addNewAddressHandleer}
+                        className="bg-blue-600 text-white font-medium py-2 px-4 rounded hover:bg-blue-700 transition duration-300">
+                        Add Address
+                    </button>
                </div>
             </div>
         ) : (
@@ -41,6 +63,13 @@ export const AddressInfo = () => {
             )}     
             </div>
         )}
+
+
+        <AddressInfoModal
+            open={openAddressModal}
+            setOpen={setOpenAddressModal}>
+                 <AddAddressForm />     // children 
+        </AddressInfoModal>
     </div>
   );
 }
