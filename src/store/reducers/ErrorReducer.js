@@ -14,6 +14,13 @@ export const errorReducer = (state = initialState , action ) =>{
                 isLoading : true,
                 errormessage : null
             };
+        case "BTN_LOADER":
+            return{
+                ...state,
+                btnLoader : true,
+                errormessage : null,
+                categoryError : null,
+            };
         case "IS_SUCCESS":
               return{
                 ...state,
@@ -41,6 +48,7 @@ export const errorReducer = (state = initialState , action ) =>{
                 categoryError : null,
                 errorMessage : null
             };
+
                 
             
         

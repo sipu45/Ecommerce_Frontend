@@ -1,13 +1,14 @@
 import { useForm } from "react-hook-form";
 import InputField from "../shared/inputField";
 import { FaAddressCard } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Spinners from "../shared/Spinners";
+import { addUpdateUserAddress } from "../../store/actions";
 
 // form related information will be added here in the future
-const AddAddressForm = () => {
+const AddAddressForm = ({ address , setOpenAddressModel}) => {
     
-
+    const dispatch = useDispatch();
     const {btnLoader} = useSelector((state) => state.errors);
      const {
             register,
@@ -20,8 +21,15 @@ const AddAddressForm = () => {
 
 
         const onSaveAddressHandler = async(data) => {
-        console.log("Save Address Click");
-    }
+             console.log("Save Address Click");
+             dispatch(addUpdateUserAddress(
+                        data,
+                        toast,
+                        address?.addressId,
+                        setOpenAddressModel,
+                ));
+                
+        }
 
   return (
      <div className="">
@@ -34,8 +42,8 @@ const AddAddressForm = () => {
                                 Add Address
                             </h1>
                         </div>
-                 <hr className="flex flex-col gap-4"/>
-                    <div className="flex flex-col gap-3">
+                 <hr className="flex flex-col gap-4 "/>
+                    <div className="flex flex-col gap-3 mt-2">
                         <InputField
                             label="Building Name"
                             required

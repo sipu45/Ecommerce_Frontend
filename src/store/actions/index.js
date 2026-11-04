@@ -175,3 +175,25 @@ export  const logOutUser =(navigate) => (dispatch) =>{
 // CheckOut Flow 
 // checkout in cart page -> address page -> payment page -> order summary page -> final payment 
 // user is now serious about making a purchase so we will saving the cart in backend
+
+export const addUpdateUserAddress = 
+(sendData , toast , addressId , setOpenAddressModel) => async(dispatch , getState) => {
+
+    // get the user from authReducer
+    // const { user } = getState().auth;
+    // dispatch the btnLoader true to show the loader on the button
+    dispatch({type:"BTN_LOADER"});
+
+    try{                    
+         const { data } = await api.post("/api/addresses",sendData);  //API CALL TO BACkEND  
+         toast.success( "Address Added Successfully"); 
+        } catch(error){
+            console.log(error);
+            toast.error(error?.response?.data?.message ||  "Internal Server error");
+             dispatch({type:"IS_ERROR", payload:null});
+
+        } finally{
+            setOpenAddressModel(false); // close the modal
+        }
+
+}

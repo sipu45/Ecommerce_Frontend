@@ -68,7 +68,9 @@ export const AddressInfo = () => {
         <AddressInfoModal
             open={openAddressModal}
             setOpen={setOpenAddressModal}>
-                 <AddAddressForm /> 
+                 <AddAddressForm 
+                    addres={selectedAddress}
+                    setOpenAddressModal={setOpenAddressModal}/> 
         </AddressInfoModal>
 
          {/* children is a special prop in react that represent the content that pass between opening and closing tags of the component. In this case, the content between opening and closing tags of AddressInfoModal component is AddAddressForm component. So, AddAddressForm component will be rendered inside AddressInfoModal component. */}
