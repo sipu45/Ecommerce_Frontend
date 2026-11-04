@@ -20,7 +20,7 @@ const AddAddressForm = () => {
 
 
         const onSaveAddressHandler = async(data) => {
-        console.log("Login Click");
+        console.log("Save Address Click");
     }
 
   return (
@@ -34,26 +34,70 @@ const AddAddressForm = () => {
                                 Add Address
                             </h1>
                         </div>
-                <hr className="mt-2 mb-5 text-black "/>
+                 <hr className="flex flex-col gap-4"/>
                     <div className="flex flex-col gap-3">
                         <InputField
-                            label="UserName"
+                            label="Building Name"
                             required
-                            id="username"
+                            id="building"
                             type="text"
-                            message="UserName is reuired"
-                            placeholder="Enter your name"
+                            message="Building Name is required"
+                            placeholder="Enter your Building name"
                             register={register}
                             errors={errors}
                             />
 
                             <InputField
-                            label="Password"
+                            label="City"
                             required
-                            id="password"
-                            type="password"
-                            message="Password is reuired"
-                            placeholder="Enter your password"
+                            id="city"
+                            type="text"
+                            message="City is required"
+                            placeholder="Enter your City"
+                            register={register}
+                            errors={errors}
+                            />
+
+                            <InputField
+                            label="State"
+                            required
+                            id="state"
+                            type="text"
+                            message="State is required"
+                            placeholder="Enter your State"
+                            register={register}
+                            errors={errors}
+                            />
+
+                            <InputField
+                            label="Pincode"
+                            required
+                            id="pincode"
+                            type="text"
+                            message="Pincode is required"
+                            placeholder="Enter your Pincode"
+                            register={register}
+                            errors={errors}
+                            />
+
+                            <InputField
+                            label="Street"
+                            required
+                            id="street"
+                            type="text"
+                            message="Street is required"
+                            placeholder="Enter your Street"
+                            register={register}
+                            errors={errors}
+                            />
+
+                            <InputField
+                            label="Country"
+                            required
+                            id="country"
+                            type="text"
+                            message="Country is required"
+                            placeholder="Enter your Country"
                             register={register}
                             errors={errors}
                             />
@@ -61,7 +105,7 @@ const AddAddressForm = () => {
 
                     <button
                         disabled={btnLoader}
-                        className="bg-button-gradient flex gap-2 items-center justify-center font-semibold text-white w-full py-2 hover:text-slate-400 transition-colors duration-100 rounded-sm my-3"
+                        className="text-white bg-custom-blue px-4 py-2 rounded-md mt-4"
                         type="submit">
                             {btnLoader ?(
                                 <>
