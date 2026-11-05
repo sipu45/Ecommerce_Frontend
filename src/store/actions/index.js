@@ -177,7 +177,7 @@ export  const logOutUser =(navigate) => (dispatch) =>{
 // user is now serious about making a purchase so we will saving the cart in backend
 
 export const addUpdateUserAddress = 
-(sendData , toast , addressId , setOpenAddressModel) => async(dispatch , getState) => {
+(sendData , toast , addressId , setOpenAddressModal) => async(dispatch , getState) => {
 
     // get the user from authReducer
     // const { user } = getState().auth;
@@ -185,7 +185,7 @@ export const addUpdateUserAddress =
     dispatch({type:"BTN_LOADER"});
 
     try{                    
-         const { data } = await api.post("/api/addresses",sendData);  //API CALL TO BACkEND  
+         const { data } = await api.post("/addresses",sendData);  //API CALL TO BACkEND  
          toast.success( "Address Added Successfully"); 
         } catch(error){
             console.log(error);
@@ -193,7 +193,7 @@ export const addUpdateUserAddress =
              dispatch({type:"IS_ERROR", payload:null});
 
         } finally{
-            setOpenAddressModel(false); // close the modal
+            setOpenAddressModal(false); // close the modal
         }
 
 }

@@ -4,16 +4,16 @@ import { FaAddressCard } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import Spinners from "../shared/Spinners";
 import { addUpdateUserAddress } from "../../store/actions";
+import toast from "react-hot-toast";
 
 // form related information will be added here in the future
-const AddAddressForm = ({ address , setOpenAddressModel}) => {
+const AddAddressForm = ({ address , setOpenAddressModal}) => {
     
     const dispatch = useDispatch();
     const {btnLoader} = useSelector((state) => state.errors);
      const {
             register,
             handleSubmit,
-            reset,
             formState :{errors},
         } = useForm({
             mode : "onTouched",
@@ -26,7 +26,7 @@ const AddAddressForm = ({ address , setOpenAddressModel}) => {
                         data,
                         toast,
                         address?.addressId,
-                        setOpenAddressModel,
+                        setOpenAddressModal,
                 ));
                 
         }
@@ -38,7 +38,7 @@ const AddAddressForm = ({ address , setOpenAddressModel}) => {
                     className="">
                         <div className="flex justify-center items-center mb-4 font-semibold text-2xl text-slate-800 py-2 px-4">
                             <FaAddressCard className="mr-2 text-2xl" />
-                            <h1 className="text-slate-800 text-center font-montserrat lg:text-3xl tet-2xl font-bold">
+                            <h1 className="text-slate-800 text-center font-montserrat lg:text-3xl text-2xl font-bold">
                                 Add Address
                             </h1>
                         </div>
@@ -47,7 +47,7 @@ const AddAddressForm = ({ address , setOpenAddressModel}) => {
                         <InputField
                             label="Building Name"
                             required
-                            id="building"
+                            id="buildingName"
                             type="text"
                             message="Building Name is required"
                             placeholder="Enter your Building name"
@@ -113,7 +113,7 @@ const AddAddressForm = ({ address , setOpenAddressModel}) => {
 
                     <button
                         disabled={btnLoader}
-                        className="text-white bg-custom-blue px-4 py-2 rounded-md mt-4"
+                        className="text-white bg-custom-blue px-4 py-2 rounded-md mt-4 disabled:cursor-not-allowed cursor-pointer"
                         type="submit">
                             {btnLoader ?(
                                 <>
