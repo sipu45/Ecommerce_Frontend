@@ -1,12 +1,15 @@
 import { Step, StepLabel, Stepper } from "@mui/material"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddressInfo from "./AddressInfo";
+import { useDispatch } from "react-redux";
+import { getUserAddresses } from "../../store/actions";
 
 const Checkout = () => {
     
     // making use of stepper component from material ui to show the checkout flow to user
 
     const [activeStep , setActiveStep] = useState(0); // to keep track of which step user is on
+    const dispatch = useDispatch();
 
 
     const steps=[
@@ -15,6 +18,10 @@ const Checkout = () => {
         "Order Summary",
         "Payment"
     ];
+
+    useEffect(()=>{
+        dispatch(getUserAddresses());
+    },[dispatch])
 
   return (
     <div className="py-14 min-h-[calc(100vh-100px)]">
