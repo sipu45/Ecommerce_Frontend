@@ -30,7 +30,7 @@ export const AddressInfo = () => {
     <div className="pt-4">
         {noAddressExist  ? (
             <div>
-               <div className="p-6 rounded-lg ma-w-md mx-auto flex flex-col items-center justify-center">
+               <div className="p-6 rounded-lg max-w-md mx-auto flex flex-col items-center justify-center">
                     <FaAddressBook size={50} className="text-gray-500 mb-4" />
                     <h1 className="mb-2 text-slate-900 text-center font-semibold text-2xl">
                        No Address Yet

@@ -187,6 +187,7 @@ export const addUpdateUserAddress =
     try{                    
          const { data } = await api.post("/addresses",sendData);  //API CALL TO BACkEND  
          toast.success( "Address Added Successfully"); 
+         dispatch({type:"IS_SUCCESS"}); // stop the loader
         } catch(error){
             console.log(error);
             toast.error(error?.response?.data?.message ||  "Internal Server error");
