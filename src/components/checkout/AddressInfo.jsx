@@ -3,16 +3,18 @@ import Skeleton from "../shared/Skeleton";
 import { useState } from "react";
 import AddressInfoModal from "./AddressInfoModal";
 import AddAddressForm from "./AddAddressForm";
+import { useSelector } from "react-redux";
+import AddressList from "./AddressList";
 
 
-export const AddressInfo = () => {
+export const AddressInfo = ({ address }) => {
     // User have a list of addresses that  user has against his account.
     // User can select any address from the list or can add a new address. 
     // If user select an address then that address will be used for the order delivery.
     //  If user add a new address then that address will be added to the list of addresses and will be used for the order delivery.
 
-    const noAddressExist = true; // for now we are assuming that user has no address. In future we will get this data from backend.
-    const isLoading = false; // for now we are assuming that user has no address. In future we will get this data from backend.
+    const noAddressExist = !address || address.length === 0; // for now we are assuming that user has no address. In future we will get this data from backend.
+    const {isLoading , btnLoader} = useSelector((state) => state.errors); 
 
 
     const [openAddressModal, setOpenAddressModal] = useState(false);
@@ -58,7 +60,10 @@ export const AddressInfo = () => {
                 </div> 
             ) : (
                 <div className="space-y-4 pt-6">
-                    <p>Address List here...</p>
+                    <AddressList 
+                        addresses={address}
+                        setSelectedAddress={setSelectedAddress}
+                        setOpenAddressModal={setOpenAddressModal}/>
                 </div>
             )}     
             </div>
@@ -70,7 +75,8 @@ export const AddressInfo = () => {
             setOpen={setOpenAddressModal}>
                  <AddAddressForm 
                     addres={selectedAddress}
-                    setOpenAddressModal={setOpenAddressModal}/> 
+                    setOpenAddressModal={setOpenAddressModal}
+                    /> 
         </AddressInfoModal>
 
          {/* children is a special prop in react that represent the content that pass between opening and closing tags of the component. In this case, the content between opening and closing tags of AddressInfoModal component is AddAddressForm component. So, AddAddressForm component will be rendered inside AddressInfoModal component. */}
