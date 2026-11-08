@@ -215,3 +215,10 @@ export const getUserAddresses = () => async(dispatch , getState) =>{
 
     }
 };
+
+export const selectUserChecOutAddress = (address) => {
+    return {
+        type : "SELECT_CHECKOUT_ADDRESS",
+        payload : address,
+    }
+}
