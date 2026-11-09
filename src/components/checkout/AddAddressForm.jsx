@@ -21,7 +21,6 @@ const AddAddressForm = ({ address , setOpenAddressModal}) => {
 
 
         const onSaveAddressHandler = async(data) => {
-            if(address?.address.id)
              console.log("Save Address Click");
              dispatch(addUpdateUserAddress(
                         data,
@@ -39,9 +38,7 @@ const AddAddressForm = ({ address , setOpenAddressModal}) => {
                     className="">
                         <div className="flex justify-center items-center mb-4 font-semibold text-2xl text-slate-800 py-2 px-4">
                             <FaAddressCard className="mr-2 text-2xl" />
-                            <h1 className="text-slate-800 text-center font-montserrat lg:text-3xl text-2xl font-bold">
-                                Add Address
-                            </h1>
+                                {!address?.addressId ? "Update Address" :"Add Address"}
                         </div>
                  <hr className="flex flex-col gap-4 "/>
                     <div className="flex flex-col gap-3 mt-2">

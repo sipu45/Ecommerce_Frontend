@@ -11,7 +11,7 @@ import Spinners from "../shared/Spinners";
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [loader, setLoader] = useState(true); //use true for testing purpose , must use true
+  const [loader, setLoader] = useState(false); //use true for testing purpose 
 
     // use of react-hook-form
     const {
