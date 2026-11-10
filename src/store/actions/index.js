@@ -184,8 +184,15 @@ export const addUpdateUserAddress =
     // dispatch the btnLoader true to show the loader on the button
     dispatch({type:"BTN_LOADER"});
 
-    try{                    
-         const { data } = await api.post("/addresses",sendData);  //API CALL TO BACkEND  
+    try{  
+        
+        if(!addressId){
+             const { data } = await api.post("/addresses",sendData);  //API CALL TO BACkEND  
+
+        } else{
+             await api.put(`/addresses/${addressId}`,sendData);
+        }
+        dispatch(getUserAddresses());
          toast.success( "Address Added Successfully"); 
          dispatch({type:"IS_SUCCESS"}); // stop the loader
         } catch(error){
