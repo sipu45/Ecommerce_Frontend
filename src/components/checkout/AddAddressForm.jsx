@@ -45,7 +45,7 @@ const AddAddressForm = ({ address , setOpenAddressModal}) => {
                 setValue("pincode",address?.pincode);
                 setValue("country",address?.country);
             }
-        }, [address , reset]);
+        }, [address]);
 
   return (
      <div className="">

@@ -3,8 +3,10 @@ import Skeleton from "../shared/Skeleton";
 import { useState } from "react";
 import AddressInfoModal from "./AddressInfoModal";
 import AddAddressForm from "./AddAddressForm";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AddressList from "./AddressList";
+import { DeleteModal } from "./DeleteModal";
+import toast from "react-hot-toast";
 
 
 export const AddressInfo = ({ address }) => {
@@ -18,7 +20,10 @@ export const AddressInfo = ({ address }) => {
 
 
     const [openAddressModal, setOpenAddressModal] = useState(false);
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const [selectedAddress, setSelectedAddress] = useState("");
+    
+
 
 
     const addNewAddressHandleer = () => {
@@ -27,7 +32,21 @@ export const AddressInfo = ({ address }) => {
         setSelectedAddress("");
         setOpenAddressModal(true);
         console.log("Add New Address Clicked");
-    }
+    };
+
+    const dispatch = useDispatch();
+
+
+    const deleteAddressHandleer = () => {
+        dispatch(deleteUserAddress(
+            toast,
+            selectedAddress?.addressId,
+            setOpenDeleteModal
+        ))
+    };
+
+
+
   return (
     <div className="pt-4">
         {noAddressExist  ? (
@@ -90,6 +109,15 @@ export const AddressInfo = ({ address }) => {
                     setOpenAddressModal={setOpenAddressModal}
                     /> 
         </AddressInfoModal>
+
+
+        <DeleteModal
+            open = {openDeleteModal}
+            loader = {btnLoader}
+            setOpen = {setOpenDeleteModal}
+            title = "Delete Address"
+            onDeleteHandler={deleteAddressHandleer}
+        />
 
          {/* children is a special prop in react that represent the content that pass between opening and closing tags of the component. In this case, the content between opening and closing tags of AddressInfoModal component is AddAddressForm component. So, AddAddressForm component will be rendered inside AddressInfoModal component. */}
     </div>
