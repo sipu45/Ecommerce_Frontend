@@ -86,7 +86,7 @@ export const AddressInfo = ({ address }) => {
             open={openAddressModal}
             setOpen={setOpenAddressModal}>
                  <AddAddressForm 
-                    addres={selectedAddress}
+                    address={selectedAddress}
                     setOpenAddressModal={setOpenAddressModal}
                     /> 
         </AddressInfoModal>

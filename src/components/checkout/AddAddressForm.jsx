@@ -1,5 +1,5 @@
 import { useForm  } from "react-hook-form";
-import InputField from "../shared/inputField";
+import InputField from "../shared/InputField";
 import { FaAddressCard } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import Spinners from "../shared/Spinners";
@@ -45,7 +45,7 @@ const AddAddressForm = ({ address , setOpenAddressModal}) => {
                 setValue("pincode",address?.pincode);
                 setValue("country",address?.country);
             }
-        }, [address]);
+        }, [address , reset]);
 
   return (
      <div className="">
