@@ -223,6 +223,35 @@ export const getUserAddresses = () => async(dispatch , getState) =>{
     }
 };
 
+
+export const deleteUserAddresses =
+  (toast,addressId,setOpenDeleteModal) => async(dispatch , getState) =>{
+    try{
+        dispatch({ type : "BTN_LOADER" });
+        await api.delete(`/addresses/${addressId}`); //Api call to backend
+        dispatch({type:"IS_SUCCESS"}); // stop the loader
+        dispatch(getUserAddresses()); // Address List Refreshed
+        dispatch(clearCheckOutAddress()); // clear selected Checkout address locally to ensure security
+        toast.success( "Address deleted Successfully"); 
+
+    } catch(error){
+        console.log(error);
+        dispatch({
+            type : "IS_ERROR",
+            payload : error ?.response?.data?.message || "Some Error Occured"  //optional Chainig
+         });
+
+    } finally{
+        setOpenDeleteModal(false);
+    }
+};
+
+
+export const clearCheckOutAddress = () => {
+    return{
+        type : "REMOVE_CHECKOUT_ADDRESS",
+    }
+}
 export const selectUserChecOutAddress = (address) => {
     return {
         type : "SELECT_CHECKOUT_ADDRESS",

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AddressList from "./AddressList";
 import { DeleteModal } from "./DeleteModal";
 import toast from "react-hot-toast";
+import { deleteUserAddresses } from "../../store/actions";
 
 
 export const AddressInfo = ({ address }) => {
@@ -38,7 +39,7 @@ export const AddressInfo = ({ address }) => {
 
 
     const deleteAddressHandleer = () => {
-        dispatch(deleteUserAddress(
+        dispatch(deleteUserAddresses(
             toast,
             selectedAddress?.addressId,
             setOpenDeleteModal
@@ -83,7 +84,8 @@ export const AddressInfo = ({ address }) => {
                         <AddressList 
                             addresses={address}
                             setSelectedAddress={setSelectedAddress}
-                            setOpenAddressModal={setOpenAddressModal}/>
+                            setOpenAddressModal={setOpenAddressModal}
+                            setOpenDeleteModal={setOpenDeleteModal}/>
                     </div>
 
                     {address.length > 0 && (
