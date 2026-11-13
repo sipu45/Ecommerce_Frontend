@@ -4,6 +4,7 @@ import AddressInfo from "./AddressInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserAddresses } from "../../store/actions";
 import toast from "react-hot-toast";
+import Skeleton from "../shared/Skeleton";
 
 const Checkout = () => {
     
@@ -13,6 +14,8 @@ const Checkout = () => {
     const dispatch = useDispatch();
     const { isLoading , errorMessage } = useSelector((state) => state.errors);
     const { address , selectedUserCheckOutAddress } = useSelector((state) => state.auth);
+
+    console.log({ errorMessage, selectedUserCheckOutAddress });
 
     const paymentMethod = false ;
 
@@ -55,14 +58,23 @@ const Checkout = () => {
                 ))} 
             </Stepper>
 
-            <div className="mt-5">
+
+
+            {isLoading ? (
+                <div className="lg:w-[80%] mx-auto py-5">
+                    <Skeleton />
+                </div>
+              ) : (
+                <div className="mt-5">
                    {activeStep === 0 && <AddressInfo  address = {address} />}
-            </div>
+                </div>
+              )}
+            
 
 
             <div
                 className="flex justify-between items-center px-4 fixed z-50 h-24 bottom-0 bg-white left-0 w-full py-4 border-slate-200"
-                style={{boxShadow: "0 -2px 4px rgba(100,100,100,0.1) "}}>
+                style={{boxShadow: "0 -2px 4px rgba(100,100,100,0.15) "}}>
                     <Button
                         variant="outlined"
                         disabled={activeStep === 0}

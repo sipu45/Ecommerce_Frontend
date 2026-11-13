@@ -5,7 +5,7 @@ import { selectUserChecOutAddress } from "../../store/actions";
 
 const AddressList = ({ addresses, setSelectedAddress, setOpenAddressModal , setOpenDeleteModal}) => {
     const dispatch = useDispatch();
-    const { selectedUserCheckOutAddres } = useSelector((state) => state.auth); // get selected user address from redux
+    const { selectedUserCheckOutAddress } = useSelector((state) => state.auth); // get selected user address from redux
 
     const handleAddressSelection = (addresses) => {
         dispatch(selectUserChecOutAddress(addresses));
@@ -24,7 +24,7 @@ const AddressList = ({ addresses, setSelectedAddress, setOpenAddressModal , setO
     return (
         <div className="space-y-3.5">
             {addresses?.map((address) => {
-                const isSelected = selectedUserCheckOutAddres?.addressId === address.addressId;
+                const isSelected = selectedUserCheckOutAddress?.addressId === address.addressId;
 
                 return (
                     <div

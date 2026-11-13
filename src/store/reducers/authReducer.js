@@ -17,10 +17,10 @@ export const authReducer = (state = initialState, action) => {
             return { ...state , address: action.payload};
 
         case "SELECT_CHECKOUT_ADDRESS":
-            return { ...state , selectedUserCheckOutAddres: action.payload};
+            return { ...state , selectedUserCheckOutAddress: action.payload};
 
         case "REMOVE_CHECKOUT_ADDRESS":
-            return {...state , selectedUserCheckOutAddres: null}
+            return {...state , selectedUserCheckOutAddress: null}
             
 
         case "LOG_OUT":
