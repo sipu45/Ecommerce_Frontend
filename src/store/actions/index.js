@@ -251,10 +251,21 @@ export const clearCheckOutAddress = () => {
     return{
         type : "REMOVE_CHECKOUT_ADDRESS",
     }
-}
+};
+
+
 export const selectUserChecOutAddress = (address) => {
     return {
         type : "SELECT_CHECKOUT_ADDRESS",
         payload : address,
     }
-}
+};
+
+
+
+export const addPaymentMethod = (method) => {
+    return {
+        type : "ADD_PAYMENT_METHOD",
+        payload : method,
+    }
+};

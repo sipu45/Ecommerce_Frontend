@@ -1,9 +1,15 @@
-import { FormControl, FormControlLabel,  RadioGroup } from "@mui/material"
-import { useSelector } from "react-redux"
+import { FormControl, FormControlLabel,  Radio,  RadioGroup } from "@mui/material"
+import { useDispatch, useSelector } from "react-redux"
+import { addPaymentMethod } from "../../store/actions";
 
 const PaymentMethod = () => {
     
-    const {paymentMethod} = useSelector((state) => state.payment)
+    const dispatch = useDispatch();
+    const {paymentMethod} = useSelector((state) => state.payment);
+
+    const paymentMethodHandler = (method) =>{
+        dispatch(addPaymentMethod(method));
+    }
 
   return (
     <div className="max-w-md mx-auto p-5 bg-white shadow-md rounded-lg mt-16 border">
@@ -12,10 +18,20 @@ const PaymentMethod = () => {
             <RadioGroup
                 aria-label="payment method"
                 name="paymentMethod"
-                value={paymentMethod}
-                onChange={handleChange} >
-                <FormControlLabel value="female" control={<Radio />} label="Female" />
-                <FormControlLabel value="male" control={<Radio />} label="Male" />
+                value={(e) => paymentMethod(e.traget.value)}
+                onChange={paymentMethodHandler} >
+                <FormControlLabel 
+                    value="Stripe" 
+                    control={<Radio colors ='primary' />} 
+                    label="Stripe" 
+                    className="text-gray-700"/>
+
+                <FormControlLabel 
+                    value="Paypal" 
+                    control={<Radio colors ='primary' />} 
+                    label="Paypal" 
+                    className="text-gray-700"/>
+
             </RadioGroup>
         </FormControl>
     </div>

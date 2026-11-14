@@ -17,7 +17,7 @@ const Checkout = () => {
     const { isLoading , errorMessage } = useSelector((state) => state.errors);
     const { address , selectedUserCheckOutAddress } = useSelector((state) => state.auth);
 
-    console.log({ errorMessage, selectedUserCheckOutAddress });
+    
 
     const paymentMethod = false ;
 
