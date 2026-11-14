@@ -18,8 +18,8 @@ const PaymentMethod = () => {
             <RadioGroup
                 aria-label="payment method"
                 name="paymentMethod"
-                value={(e) => paymentMethod(e.traget.value)}
-                onChange={paymentMethodHandler} >
+                value={paymentMethod}
+                onChange={(e) => paymentMethodHandler(e.target.value)} >
                 <FormControlLabel 
                     value="Stripe" 
                     control={<Radio colors ='primary' />} 
