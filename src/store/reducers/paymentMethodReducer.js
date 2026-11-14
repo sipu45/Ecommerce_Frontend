@@ -1,6 +1,6 @@
 
 const initialState = {
-    paymentMethod : "Stripe",
+    paymentMethod : null,  // for user select the default payment method
 }
 
 
