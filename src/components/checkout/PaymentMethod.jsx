@@ -1,11 +1,28 @@
 import { FormControl, FormControlLabel,  Radio,  RadioGroup } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
-import { addPaymentMethod } from "../../store/actions";
+import { addPaymentMethod, createUserCart } from "../../store/actions";
+import { useEffect } from "react";
 
 const PaymentMethod = () => {
     
     const dispatch = useDispatch();
     const {paymentMethod} = useSelector((state) => state.payment);
+    const {cart , cartId} = useSelector((state) => state.carts);
+    const {errorMessage} = useSelector((state) => state.errors);
+
+
+    useEffect(() => {
+        if(cart.length > 0 && !cartId && !errorMessage ){
+            const senCartdItems = cart.map((items) => {
+                return{
+                    productId : items.productId,
+                    quantity : items.quantity,
+                };
+            });
+
+            dispatch(createUserCart(senCartdItems));
+        }
+    } , [dispatch, cart, cartId]);
 
     const paymentMethodHandler = (method) =>{
         dispatch(addPaymentMethod(method));
@@ -38,4 +55,4 @@ const PaymentMethod = () => {
   )
 }
 
-export default PaymentMethod
+export default PaymentMethod;
