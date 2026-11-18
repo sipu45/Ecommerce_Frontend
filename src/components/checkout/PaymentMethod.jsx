@@ -22,7 +22,7 @@ const PaymentMethod = () => {
 
             dispatch(createUserCart(senCartdItems));
         }
-    } , [dispatch, cart, cartId]);
+    } , [dispatch,  cartId]);
 
     const paymentMethodHandler = (method) =>{
         dispatch(addPaymentMethod(method));
