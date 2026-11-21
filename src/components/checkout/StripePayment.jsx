@@ -1,5 +1,7 @@
 import { Alert, AlertTitle } from '@mui/material'
 
+
+// Stripe is the payment method is going to implement in the project
 const StripePayment = () => {
   return (
     <div className="h-96 flex justify-center items-center">
