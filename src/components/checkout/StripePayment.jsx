@@ -5,6 +5,8 @@ import { Alert, AlertTitle } from '@mui/material'
 // Learning the flow of stipe or any payment method
 // how stripe and payments workk ? (client side and server side workflow)
 // how stripe and payment integration would work in our app
+// Overview of Stripe and their comprehensive documentation
+
 const StripePayment = () => {
   return (
     <div className="h-96 flex justify-center items-center">
