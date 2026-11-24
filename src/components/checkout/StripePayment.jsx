@@ -7,6 +7,7 @@ import { Alert, AlertTitle } from '@mui/material'
 // how stripe and payment integration would work in our app
 // Overview of Stripe and their comprehensive documentation
 // creating a stripe test account 
+// Overview of the StripePayment Component
 const StripePayment = () => {
   return (
     <div className="h-96 flex justify-center items-center">
