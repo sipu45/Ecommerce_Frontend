@@ -2,6 +2,7 @@
 const initialState = {
     user : null,
     address : [],
+    clientSecret : null ,
     selectedUserCheckOutAddres : null,
 }
 

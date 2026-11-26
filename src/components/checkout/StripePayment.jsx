@@ -1,5 +1,5 @@
 import { Alert, AlertTitle } from '@mui/material'
-
+import { useSelector } from 'react-redux'
 
 // Stripe is the payment method is going to implement in the project
 // Learning the flow of stipe or any payment method
@@ -9,6 +9,10 @@ import { Alert, AlertTitle } from '@mui/material'
 // creating a stripe test account 
 // Overview of the StripePayment Component
 const StripePayment = () => {
+  const {clientSecret} = useSelector((state) => state.auth);
+  const {totalPrice} = useSelector((state) => state.carts);
+  const {isLoading , errorMessage } = useSelector((state) => state.errors);
+
   return (
     <div className="h-96 flex justify-center items-center">
            <Alert severity="warning" variant='filled' style={{maxWidth: "400px"}}>
