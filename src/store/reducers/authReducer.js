@@ -12,7 +12,6 @@ export const authReducer = (state = initialState, action) => {
     switch(action.type){
         case "LOGIN_USER":
             return { ...state , user: action.payload};
-        
 
         case "USER_ADDRESS":
             return { ...state , address: action.payload};
@@ -21,8 +20,10 @@ export const authReducer = (state = initialState, action) => {
             return { ...state , selectedUserCheckOutAddress: action.payload};
 
         case "REMOVE_CHECKOUT_ADDRESS":
-            return {...state , selectedUserCheckOutAddress: null}
+            return {...state , selectedUserCheckOutAddress: null};
             
+        case "CLIENT_SECRET":
+            return {...state , clientSecret : action.payload };
 
         case "LOG_OUT":
             return { 

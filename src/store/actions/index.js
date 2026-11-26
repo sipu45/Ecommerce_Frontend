@@ -307,3 +307,22 @@ export const getUserCart = () => async(dispatch , getState) =>{
 
     }
 };
+
+
+export const createStripePaymentSecret
+  = (totalPrice , toast) => async(dispatch , getState) => { // if any error happen then add dispatch in the async function 
+        try{ 
+            dispatch({ type : "IS_FETCHING" });                   
+            const { data } = await api.post("/order/stripe-client-secret",{
+                "amount" : Number(totalPrice) * 100,
+                "currency" : "usd"
+            });
+            dispatch({ type : "CLIENT_SECRET" , payload : data }); 
+            localStorage.setItem("clint-secret" , JSON.stringify(data));
+            dispatch({ type : "IS_SUCCESS" });                           
+
+        } catch(error){
+            console.log(error);
+            toast.error(error?.response?.data?.message || "Failed to create clent-secret ");
+        } 
+}
